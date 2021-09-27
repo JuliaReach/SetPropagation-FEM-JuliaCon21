@@ -19,13 +19,13 @@ Rayleigh damping shown in the diagram below.
 
 <img src="https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/example/masses.png" width="400" class="center"/>
 
-Given the FEM assembled matrices (Line 3), the range of variation of the external loads (Line 4) is 10\% around the nominal value 1.
-Initial displacements and velocities for both masses belong to the interval `[-0.5, 0.5]` (Line 5).
+Given the FEM assembled matrices, the range of variation of the external loads is 10\% around the nominal value 1.
+Initial displacements and velocities for both masses belong to the interval `[-0.5, 0.5]`.
 The initial-value problem is instantiated and homogeneized as described in [1].
 
 <img src="https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/example/code.png?raw=true" width="550"/>
 
-To illustrate the flexibility of our approach, two algorithm choices are considered, both relying on support functions [7] (`LGG09` algorithm in Lines 8-9). `solA` contains the flowpipe efficiently computed along box directions, while `solB` contains the projection of the flowpipe for node 1 coordinates. To improve the accuracy, the latter method uses octagonal template directions.
+To illustrate the flexibility of our approach, two algorithm choices are considered, both relying on support functions [7] (`LGG09` algorithm). `solA` contains the flowpipe efficiently computed along box directions, while `solB` contains the projection of the flowpipe for node 1 coordinates. To improve the accuracy, the latter method uses octagonal template directions.
 
 <img src="https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/example/displacement_vs_time.png" width="400"/>
 
