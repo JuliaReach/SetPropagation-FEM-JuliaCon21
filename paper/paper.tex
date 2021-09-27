@@ -1,0 +1,127 @@
+\documentclass{juliacon}
+
+\setcounter{page}{1}
+
+\usepackage{mathrsfs}
+\usepackage{amssymb,amstext,amsfonts,amsmath}
+
+\usepackage{todonotes}
+\newcommand{\todoi}[2][]{\todo[inline,#1]{#2}}
+\newcommand{\todoq}[2][]{\todo[inline,color=blue!20!white,#1]{#2}}
+
+\usepackage{xspace}
+\usepackage[labelformat=simple]{subfig}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+
+\usepackage{calc}
+\usepackage{graphicx,import}
+
+\usepackage{comment}
+
+% no number in references section
+\usepackage[square,sort,comma,numbers]{natbib}
+
+% algorithms-pseudocode
+\usepackage{jlcode}
+\usepackage{listings}
+
+\lstset{
+	language=Julia,
+	basicstyle=\ttfamily\footnotesize,
+	numberstyle=\scriptsize,
+	backgroundcolor=\color{gray!10},
+	frame=single,
+	tabsize=2,
+	rulecolor=\color{black!30},
+	title=\lstname,
+	escapeinside={\%(*}{*)},
+	breaklines=true,
+	breakatwhitespace=true,
+	framextopmargin=2pt,
+	framexbottommargin=2pt,
+	extendedchars=true,
+	inputencoding=utf8,
+	columns=fullflexible,
+}
+
+
+\input{macros}
+                   
+\begin{document}
+	
+\input{header}
+
+\maketitle
+
+\emph{From continuum to semi-discrete equations.} In the context of linear solid dynamics, the spatial discretization of the governing partial differential equations (PDEs) using the Finite-Element Method (FEM)~\cite{Bathe2014}, results in
+%
+\begin{equation}\label{eq:second_order}
+\mathbf{M} \mathbf{x}''(t) + \mathbf{C}\mathbf{x}'(t) + \mathbf{K}\mathbf{x}(t) = \mathbf{F}(t),
+\end{equation}
+%
+a system of second-order differential equations in time, where $\mathbf{x}(0) \in \mathcal{X}_0$ and $\mathbf{x}'(0) \in \mathcal{V}_0$ are the sets of initial displacements and velocities, $\mathbf{x} \in \mathbb{R}^n$ is the state vector, and $\mathbf{M}$, $\mathbf{C}$ and $\mathbf{K}$ are the mass, damping and stiffness matrices, respectively. Depending on the problem and the mesh size, $n$ is typically  between $10^2$ and $10^5$.
+	
+\vspace{0.2cm}
+
+\emph{Representing solutions with sets.} In \cite{forets2021combining} we present a novel approach for time integration of solid heat transfer and structural dynamics equations based on reachability analysis techniques~\cite{althoff2020set}. These methods are implemented in \href{http://github.com/JuliaReach/ReachabilityAnalysis.jl}{ReachabilityAnalysis.jl}, a core package of \href{http://juliareach.com}{JuliaReach}.
+%
+Reachability is a modern computational approach where solutions to differential equations are represented using sets.
+%
+The set-based conservative time integration of Eq.~\eqref{eq:second_order} returns solution sets (\emph{flowpipes}) that include all exact trajectories, with convergence to the true reachable states as the time step decreases.
+
+\vspace{-0.1cm}
+
+\begin{figure}[htb]
+	\centering
+ \def\svgwidth{0.25\textwidth}
+ \input{diagram.pdf_tex}
+ \caption{Diagram of two degrees of freedom and Rayleigh damping.}
+ \label{fig:diagram}
+\end{figure}
+
+\noindent \emph{Minimal example.} We solve the system in Fig.~\ref{fig:diagram} loaded with a Heaviside step function.
+%
+Given the FEM assembled matrices (Line 3), the range of variation of the external loads (Line 4) is 10\% around the nominal value $1$.
+%
+Initial displacements and velocities for both masses belong to the interval $[-0.5, 0.5]$ (Line 5).
+%
+The initial-value problem is instantiated and homogeneized as described in \cite{forets2021combining}.
+
+
+\begin{lstlisting}[label=ejemplo, numbers=left, aboveskip=-0.2cm, belowskip=0.8mm]
+using ReachabilityAnalysis
+m = 0.25; k = 2.0
+M = [2m 0; 0 m]); K = [2k -k; -k k]; C = (M+K)/20
+F = [0.0, 1.0]; ΔF0 = Interval(0.9, 1.1)
+U0 = BallInf(zeros(4), 0.5)
+sys = SecondOrderLinearContinuousSystem(M, C, K, F)
+prob = InitialValueProblem(homogeneize(sys), U0 × ΔF0)
+solA = solve(prob, 50, LGG09(δ=5e-2, dirs=:box, dim=5))
+solB = solve(prob, 50, LGG09(δ=5e-2, dirs=:oct, dim=5))
+\end{lstlisting}
+
+\begin{figure}[tb!]
+	\centering
+	\includegraphics[width=0.8\linewidth,keepaspectratio]{example/displacement_vs_time}
+	
+	\includegraphics[width=0.8\linewidth,keepaspectratio]{example/velocity_vs_displacement}
+	%
+	\caption{Flowpipe using canonical directions projected on time (top), and using octagonal directions at node 1 (bottom). We additionally plot random simulations.}
+	\label{fig:example}
+\end{figure}
+
+\noindent \emph{Solution method.} To illustrate the flexibility of our approach, two algorithm choices are considered, both relying on support functions~\cite{LeGuernic2010250} (\texttt{LGG09} algorithm in Lines 8-9).
+%
+\texttt{solA} contains the flowpipe efficiently computed along box directions $\pm e_1 = [\pm 1, 0, 0, 0]^T$, while \texttt{solB} contains the projection of the flowpipe for node 1 coordinates. To improve the accuracy, the latter method uses octagonal template directions.
+
+\vspace{0.2cm}
+
+\noindent \emph{Perspectives.} We envision to model variations in mass and stiffness parameters using interval methods~\cite{forets2021intervalmat, ferranti2021interval}.
+%
+Probabilistic reachability, and modeling nonlinear behaviors using state-space abstraction methods, are also planned.
+%
+We think that integrating the tool with third-party open source FEM software, such as \href{http://onsas.org}{ONSAS}~\cite{onsas}, is the next key step for solving real world problems using reachability.
+
+\input{bib.tex}
+	
+\end{document}
