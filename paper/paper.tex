@@ -44,7 +44,6 @@
 	columns=fullflexible,
 }
 
-
 \input{macros}
                    
 \begin{document}
@@ -87,11 +86,10 @@ Initial displacements and velocities for both masses belong to the interval $[-0
 %
 The initial-value problem is instantiated and homogeneized as described in \cite{forets2021combining}.
 
-
 \begin{lstlisting}[label=ejemplo, numbers=left, aboveskip=-0.2cm, belowskip=0.8mm]
 using ReachabilityAnalysis
 m = 0.25; k = 2.0
-M = [2m 0; 0 m]); K = [2k -k; -k k]; C = (M+K)/20
+M = [2m 0; 0 m]; K = [2k -k; -k k]; C = (M+K)/20
 F = [0.0, 1.0]; ΔF0 = Interval(0.9, 1.1)
 U0 = BallInf(zeros(4), 0.5)
 sys = SecondOrderLinearContinuousSystem(M, C, K, F)
