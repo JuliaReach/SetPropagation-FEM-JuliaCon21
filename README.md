@@ -1,8 +1,8 @@
 # Computing Reachable Sets of Semi-Discrete Solid Dynamics Equations with ReachabilityAnalysis.jl
 
-by Marcelo Forets (Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay),
-Daniel Freire Caporale (Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay), and
-Jorge M. Pérez Zerpa (Instituto de Estructuras y Transporte, Facultad de Ingeniería, UdelaR, Montevideo, Uruguay).
+by [Marcelo Forets](https://github.com/mforets) (Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay),
+[Daniel Freire Caporale](https://github.com/jorgepz) (Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay), and
+[Jorge M. Pérez Zerpa](https://github.com/dfcaporale) (Instituto de Estructuras y Transporte, Facultad de Ingeniería, UdelaR, Montevideo, Uruguay).
 
 ## Presentation
 
@@ -41,8 +41,7 @@ Control, Robotics, and Autonomous Systems, 4, 2020.
 USA, 2 edition, 2014.
 
 [3] Jorge M. Pérez Zerpa et al. Open Nonlinear Structural Anal-
-ysis Solver ONSAS. https://github.com/ONSAS/ONSAS.
-m/, 2021.
+ysis Solver ONSAS. https://github.com/ONSAS/ONSAS.m/, 2021.
 
 [4] Luca Feranti, Marcelo Forets, and David P. Sanders. Inter-
 valLinearAlgebra.jl: linear algebra done rigorously, 9 2021.
@@ -54,7 +53,7 @@ ods for time integration in transient solid mechanics problems.
 arXiv preprint arXiv:2105.05841, 2021.
 
 [6] Marcelo Forets, Christian Schilling, and Luca Feranti. Interval-
-matrices.jl: Matrices with interval coefficients in julia, 9 2021.
+matrices.jl: Matrices with interval coefficients in Julia, 9 2021.
 doi:10.5281/zenodo.5516249.
 
 [7] Colas Le Guernic and Antoine Girard. Reachability analysis
