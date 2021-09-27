@@ -8,6 +8,10 @@ by [Marcelo Forets](https://github.com/mforets) (Depto. de Matemática y Aplicac
 
 [![JuliaCon 2021 video](https://img.youtube.com/vi/MQM9U0hiLks/0.jpg)](https://youtu.be/MQM9U0hiLks)
 
+## Extended Abstract
+
+[paper.pdf](https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/paper.pdf)
+
 ## Pre-print
 
 https://arxiv.org/abs/2105.05841
