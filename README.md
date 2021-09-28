@@ -1,8 +1,7 @@
 # Computing Reachable Sets of Semi-Discrete Solid Dynamics Equations with ReachabilityAnalysis.jl
 
-by [Marcelo Forets](https://github.com/mforets) (Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay),
-[Daniel Freire Caporale](https://github.com/jorgepz) (Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay), and
-[Jorge M. Pérez Zerpa](https://github.com/dfcaporale) (Instituto de Estructuras y Transporte, Facultad de Ingeniería, UdelaR, Montevideo, Uruguay).
+by [Jorge M. Pérez Zerpa](https://github.com/dfcaporale) (Instituto de Estructuras y Transporte, Facultad de Ingeniería, UdelaR, Montevideo, Uruguay), [Marcelo Forets](https://github.com/mforets) (Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay) and
+[Daniel Freire Caporale](https://github.com/jorgepz) (Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay).
 
 ## Presentation
 
