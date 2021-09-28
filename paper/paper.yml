@@ -6,19 +6,21 @@ keywords:
 - Structural Dynamics
 - Numerical Verification
 authors:
+  - name: Jorge M. {P\'erez Zerpa}
+    affiliation: 1
   - name: Marcelo Forets
     orcid: 0000-0003-1361-440X
-    affiliation: 1
-  - name: Daniel Freire Caporale
     affiliation: 2
-  - name: Jorge M. {P\'erez Zerpa}
+  - name: Daniel Freire Caporale
     affiliation: 3
+
 affiliations:
-  - name: Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay
-    index: 1
-  - name: Instituto de Física, Facultad de Ciencias, UdelaR, Montevideo, Uruguay
-    index: 2
   - name: Instituto de Estructuras y Transporte, Facultad de Ingeniería, UdelaR, Montevideo, Uruguay
+    index: 1
+  - name: Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay
+    index: 2
+  - name: Instituto de Física, Facultad de Ciencias, UdelaR, Montevideo, Uruguay
     index: 3
+
 date: 27 September 2021
 bibliography: ref.bib
