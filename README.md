@@ -34,6 +34,10 @@ To illustrate the flexibility of our approach, two algorithm choices are conside
 
 <img src="https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/example/velocity_vs_displacement.png" width="400"/>
 
+## Examples repository
+
+https://github.com/JuliaReach/SetPropagation-FEM-Examples
+
 ## References
 
 [1] Matthias Althoff, Goran Frehse, and Antoine Girard. Set propagation techniques for reachability analysis. Annual Review of Control, Robotics, and Autonomous Systems, 4, 2020.
