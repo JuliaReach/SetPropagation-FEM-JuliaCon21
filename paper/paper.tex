@@ -62,7 +62,7 @@ a system of second-order differential equations in time, where $\mathbf{x}(0) \i
 	
 \vspace{0.2cm}
 
-\emph{Representing solutions with sets.} In \cite{forets2021combining} we present a novel approach for time integration of solid heat transfer and structural dynamics equations based on reachability analysis techniques~\cite{althoff2020set}. These methods are implemented in \href{http://github.com/JuliaReach/ReachabilityAnalysis.jl}{ReachabilityAnalysis.jl}, a core package of \href{http://juliareach.com}{JuliaReach}.
+\emph{Representing solutions with sets.} In \cite{forets2021combining} we present a novel approach for time integration of solid heat transfer and structural dynamics equations based on reachability analysis techniques~\cite{althoff2020set}. These methods are implemented in \href{http://github.com/JuliaReach/ReachabilityAnalysis.jl}{ReachabilityAnalysis.jl}, a core package of \href{http://juliareach.com}{JuliaReach}, while FEM assembly is done using the Octave tool~\href{http://onsas.org}{ONSAS}~\cite{onsas}.
 %
 Reachability is a modern computational approach where solutions to differential equations are represented using sets.
 %
@@ -118,7 +118,7 @@ solB = solve(prob, 50, LGG09(δ=5e-2, dirs=:oct, dim=5))
 %
 Probabilistic reachability, and modeling nonlinear behaviors using state-space abstraction methods, are also planned.
 %
-We think that integrating the tool with third-party open source FEM software, such as \href{http://onsas.org}{ONSAS}~\cite{onsas}, is the next key step for solving real world problems using reachability.
+Julia has a thriving ecosystem of open source FEM projects~\cite{Gridap,Ferrite,FinEtools}, and we think that integrating set propagation into some of those tools is the next key step for solving real world problems using reachability.
 
 \input{bib.tex}
 	
