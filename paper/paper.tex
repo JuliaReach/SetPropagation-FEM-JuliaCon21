@@ -84,7 +84,7 @@ Given the FEM assembled matrices (Line 3), the range of variation of the externa
 %
 Initial displacements and velocities for both masses belong to the interval $[-0.5, 0.5]$ (Line 5).
 %
-The initial-value problem is instantiated and homogeneized as described in \cite{forets2021combining}.
+The initial-value problem is instantiated and homogenized as described in \cite{forets2021combining}.
 
 \begin{lstlisting}[label=ejemplo, numbers=left, aboveskip=-0.2cm, belowskip=0.8mm]
 using ReachabilityAnalysis
@@ -93,7 +93,7 @@ M = [2m 0; 0 m]; K = [2k -k; -k k]; C = (M+K)/20
 F = [0.0, 1.0]; ΔF0 = Interval(0.9, 1.1)
 U0 = BallInf(zeros(4), 0.5)
 sys = SecondOrderLinearContinuousSystem(M, C, K, F)
-prob = InitialValueProblem(homogeneize(sys), U0 × ΔF0)
+prob = InitialValueProblem(homogenize(sys), U0 × ΔF0)
 solA = solve(prob, 50, LGG09(δ=5e-2, dirs=:box, dim=5))
 solB = solve(prob, 50, LGG09(δ=5e-2, dirs=:oct, dim=5))
 \end{lstlisting}
