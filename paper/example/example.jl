@@ -15,7 +15,7 @@ F = [0.0, 1.0]; ΔF0 = Interval(0.9, 1.1)
 # initial-value problem with set initial conditions
 sys = SecondOrderAffineContinuousSystem(M, C, K, F)
 U0 = BallInf(zeros(4), 0.5)
-prob = InitialValueProblem(homogeneize(sys), U0 × ΔF0)
+prob = InitialValueProblem(homogenize(sys), U0 × ΔF0)
 
 # solve using support functions
 solA = solve(prob, 50, LGG09(δ=5e-2, dirs=:box, dim=5))
@@ -58,7 +58,7 @@ lens!(fig, [40, 50], [0.4, 0.6], inset = (1, bbox(0.58, 0.58, 0.35, 0.35)),
 savefig(fig, "displacement_vs_time.pdf")
 
 # plot velocity vs displacement
-fig = plot(xlab="Displacement", ylab="Velocity",
+fig = plot(xlab="Displacement mass 2m", ylab="Displacement mass m",
            legendfontsize=16, legend=:topright,
            tickfont=font(18, "Times"), guidefontsize=18,
            xtick=([-0.5,0, 0.5, 1.0, 1.5], [L"-0.5", L"0", L"0.5", L"1.0", L"1.5"]),
@@ -73,5 +73,5 @@ plot!(fig, solB, vars=(1, 2), lw=0.0, c=:blue, alpha=0.8)
 [plot!(fig, s, vars=(1, 2), alpha=0.7, seriestype=:path, c=:magenta, marker=:none, lw=1.1) for s in sol_orbit]
 [plot!(fig, s, vars=(1, 2), alpha=0.7, seriestype=:path, c=:magenta, marker=:none, lw=1.1) for s in sol_orbit_vert]
 
-savefig(fig, "velocity_vs_displacement.pdf")
+savefig(fig, "displacement_vs_displacement.pdf")
 
