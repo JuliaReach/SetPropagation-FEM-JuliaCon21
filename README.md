@@ -3,6 +3,8 @@
 by [Jorge M. Pérez Zerpa](https://github.com/dfcaporale) (Instituto de Estructuras y Transporte, Facultad de Ingeniería, UdelaR, Montevideo, Uruguay), [Marcelo Forets](https://github.com/mforets) (Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay) and
 [Daniel Freire Caporale](https://github.com/jorgepz) (Depto. de Matemática y Aplicaciones, CURE, UdelaR, Maldonado, Uruguay).
 
+[![status](https://proceedings.juliacon.org/papers/24a082818ba9447244932e21d16da342/status.svg)](https://proceedings.juliacon.org/papers/24a082818ba9447244932e21d16da342)
+
 ## Presentation
 
 [![JuliaCon 2021 video](https://img.youtube.com/vi/MQM9U0hiLks/0.jpg)](https://youtu.be/MQM9U0hiLks)
