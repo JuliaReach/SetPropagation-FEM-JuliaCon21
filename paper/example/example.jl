@@ -56,6 +56,7 @@ lens!(fig, [40, 50], [0.4, 0.6], inset = (1, bbox(0.58, 0.58, 0.35, 0.35)),
       ytick=([0.4, 0.5, 0.6], [L"0.4", L"0.5", L"0.6"]))
 
 savefig(fig, "displacement_vs_time.pdf")
+savefig(fig, "displacement_vs_time.png")
 
 # plot velocity vs displacement
 fig = plot(xlab="Displacement mass 2m", ylab="Displacement mass m",
@@ -74,4 +75,4 @@ plot!(fig, solB, vars=(1, 2), lw=0.0, c=:blue, alpha=0.8)
 [plot!(fig, s, vars=(1, 2), alpha=0.7, seriestype=:path, c=:magenta, marker=:none, lw=1.1) for s in sol_orbit_vert]
 
 savefig(fig, "displacement_vs_displacement.pdf")
-
+savefig(fig, "displacement_vs_displacement.png")
