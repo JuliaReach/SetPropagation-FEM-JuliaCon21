@@ -104,13 +104,13 @@ solB = solve(prob, 50, LGG09(δ=5e-2, dirs=:oct, dim=5))
 	
 	\includegraphics[width=0.8\linewidth,keepaspectratio]{example/displacement_vs_displacement}
 	%
-	\caption{Flowpipe using canonical directions projected on time (top), and using octagonal directions at node 1 (bottom). We additionally plot random simulations.}
+	\caption{Flowpipe using canonical directions projected on time (top), and using octagonal directions at displacement coordinates (bottom). We additionally plot random simulations.}
 	\label{fig:example}
 \end{figure}
 
 \noindent \emph{Solution method.} To illustrate the flexibility of our approach, two algorithm choices are considered, both relying on support functions~\cite{LeGuernic2010250} (\texttt{LGG09} algorithm in Lines 8-9).
 %
-\texttt{solA} contains the flowpipe efficiently computed along box directions $\pm e_1 = [\pm 1, 0, 0, 0]^T$, while \texttt{solB} contains the projection of the flowpipe for node 1 coordinates. To improve the accuracy, the latter method uses octagonal template directions.
+\texttt{solA} contains the flowpipe efficiently computed along box directions $\pm e_1 = [\pm 1, 0, 0, 0]^T$, while \texttt{solB} contains the projection of the flowpipe for displacement coordinates of each mass. To improve the accuracy, the latter method uses octagonal template directions.
 
 \vspace{0.2cm}
 

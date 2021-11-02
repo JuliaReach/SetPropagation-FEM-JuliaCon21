@@ -30,9 +30,9 @@ The initial-value problem is instantiated and homogeneized as described in [1].
 
 <img src="https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/example/code.png?raw=true" width="550"/>
 
-To illustrate the flexibility of our approach, two algorithm choices are considered, both relying on support functions [7] (`LGG09` algorithm). `solA` contains the flowpipe efficiently computed along box directions, while `solB` contains the projection of the flowpipe for node 1 coordinates. To improve the accuracy, the latter method uses octagonal template directions.
+To illustrate the flexibility of our approach, two algorithm choices are considered, both relying on support functions [7] (`LGG09` algorithm). `solA` contains the flowpipe efficiently computed along box directions. To improve the accuracy, `solB` is computed using octagonal template directions.
 
-<img src="https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/example/displacement_vs_time.png" width="400"/>
+<img src="https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/example/displacement_vs_displacement.png" width="400"/>
 
 <img src="https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/example/velocity_vs_displacement.png" width="400"/>
 
