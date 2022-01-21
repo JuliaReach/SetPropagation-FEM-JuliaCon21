@@ -48,17 +48,4 @@ To illustrate the flexibility of our approach, two algorithm choices are conside
 
 ## References
 
-[1] Matthias Althoff, Goran Frehse, and Antoine Girard. Set propagation techniques for reachability analysis. Annual Review of Control, Robotics, and Autonomous Systems, 4, 2020.
-
-[2] Klaus-Jürgen Bathe. Finite Element Procedures. Watertown, USA, 2 edition, 2014.
-
-[3] Jorge M. Pérez Zerpa et al. Open Nonlinear Structural Analysis Solver ONSAS. https://github.com/ONSAS/ONSAS.m/, 2021.
-
-[4] Luca Feranti, Marcelo Forets, and David P. Sanders. IntervalLinearAlgebra.jl: linear algebra done rigorously, 9 2021. doi:10.5281/zenodo.5363563.
-
-[5] Marcelo Forets, Daniel Freire Caporale, and Jorge M Pérez Zerpa. Combining set propagation with finite element methods for time integration in transient solid mechanics problems. arXiv preprint arXiv:2105.05841. Accepted in Computers & Structures, 2021.
-
-[6] Marcelo Forets, Christian Schilling, and Luca Feranti. IntervalMatrices.jl: Matrices with interval coefficients in Julia, 9 2021.
-doi:10.5281/zenodo.5516249.
-
-[7] Colas Le Guernic and Antoine Girard. Reachability analysis of linear systems using support functions. Nonlinear Analysis: Hybrid Systems, 4(2):250 – 262, 2010. IFAC World Congress 2008.
+See https://github.com/JuliaCon/proceedings-review/issues/95
