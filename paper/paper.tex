@@ -52,73 +52,103 @@
 
 \maketitle
 
-\emph{From continuum to semi-discrete equations.} In the context of linear solid dynamics, the spatial discretization of the governing partial differential equations (PDEs) using the Finite-Element Method (FEM)~\cite{Bathe2014}, results in
+\emph{The Set-Based Approach.} %
+%
+Many real-world problems require the resolution of ODEs with uncertainties such as initial conditions or applied loads. %
+%
+Obtaining solutions considering these uncertainties is a challenging task, particularly in large scale systems.
+%
+The set-based approach consists in the construction of sets that contain all the feasible solutions of the ODEs~\cite{althoff2020set}. %
+% ---------------
+
+
+\vspace{0.2cm}
+
+\emph{Solid Dynamics ODEs.} %
+%
+In problems such as wave propagation or structural vibrations, solid dynamics problems are formulated. %
+%
+In these cases, large systems of ODEs of the form:
 %
 \begin{equation}\label{eq:second_order}
 \mathbf{M} \mathbf{x}''(t) + \mathbf{C}\mathbf{x}'(t) + \mathbf{K}\mathbf{x}(t) = \mathbf{F}(t),
 \end{equation}
 %
-a system of second-order differential equations in time, where $\mathbf{x}(0) \in \mathcal{X}_0$ and $\mathbf{x}'(0) \in \mathcal{V}_0$ are the sets of initial displacements and velocities, $\mathbf{x} \in \mathbb{R}^n$ is the state vector, and $\mathbf{M}$, $\mathbf{C}$ and $\mathbf{K}$ are the mass, damping and stiffness matrices, respectively. Depending on the problem and the mesh size, $n$ is typically  between $10^2$ and $10^5$.
+are formulated using the Finite-Element Method (FEM)~\cite{Bathe2014}, where $\mathbf{x} \in \mathbb{R}^n$ is the displacements (or state) vector, and $\mathbf{M}$, $\mathbf{C}$ and $\mathbf{K}$ are the mass, damping and stiffness matrices, respectively. Depending on the problem $n$ is typically  between $10^2$ and $10^5$.
+
 	
 \vspace{0.2cm}
 
-\emph{Representing solutions with sets.} In \cite{forets2021combining} we present a novel approach for time integration of heat transfer and structural dynamics equations based on reachability analysis techniques~\cite{althoff2020set}. These methods are implemented in \href{http://github.com/JuliaReach/ReachabilityAnalysis.jl}{ReachabilityAnalysis.jl}, a core package of \href{http://juliareach.com}{JuliaReach}, while FEM matrices assembly is done using the Octave tool~\href{http://onsas.org}{ONSAS}~\cite{onsas}.
+\emph{Set-Based Solid Dynamics.} %
 %
-Reachability is a modern computational approach where differential equations solutions are represented using sets.
+When uncertainty is present, the initial displacements and velocities are modeled as $\mathbf{x}(0) \in \mathcal{X}_0$ and $\mathbf{x}'(0) \in \mathcal{V}_0$ respectively. %
 %
-The set-based conservative time integration of Eq.~\eqref{eq:second_order} returns solution sets (\emph{flowpipes}) that include all exact trajectories, with convergence to the true reachable states as the time step decreases.
+In \cite{forets2021combining} a novel approach for time integration of structural dynamics equations based on set-based techniques was presented. It allows to compute, in a single integration, the solution sets (or \emph{flowpipes}) that include all exact trajectories under uncertainties in the initial conditions and applied loads.
+%
+Such solution sets cannot be obtained with standard numerical integrators because they are designed to propagate initial points, not sets.
 
-\vspace{-0.1cm}
+\vspace{0.2cm}
+
+
+\emph{Set-Based FEM Implementation and Application.} %
+%
+We have extended the package \href{http://github.com/JuliaReach/ReachabilityAnalysis.jl}{ReachabilityAnalysis.jl}\cite{ReachabilityAnalysis} to support the set-based approach for solid dynamics. Through a simple interface, it can be integrated with FEM analysis tools such as \href{http://onsas.org}{ONSAS}~\cite{onsas}.
+%
+The implementations developed can be used to solve large systems, however, in this abstract a minimal illustrative problem was chosen.
+%
+A system of two masses loaded with a Heaviside step function as shown in Fig.~\ref{fig:diagram} is considered. It can be easily modeled and solved using the code below. The resulting solutions sets, or flowpipes, are shown in Fig.~\ref{fig:example}. We additionally plot random simulations.
+%
 
 \begin{figure}[htb]
 	\centering
- \def\svgwidth{0.25\textwidth}
- \input{diagram.pdf_tex}
- \caption{Diagram of two degrees of freedom and Rayleigh damping.}
- \label{fig:diagram}
+	\def\svgwidth{0.25\textwidth}
+	\input{diagram.pdf_tex}
+	\caption{Diagram of two degrees of freedom and Rayleigh damping.}
+	\label{fig:diagram}
 \end{figure}
 
-\noindent \emph{Minimal example.} We solve the system in Fig.~\ref{fig:diagram} loaded with a Heaviside step function.
-%
-Given the FEM assembled matrices (Line 3), the range of variation of the external loads (Line 4) is 10\% around the nominal value $1$.
-%
-Initial displacements and velocities for both masses belong to the interval $[-0.5, 0.5]$ (Line 5).
-%
-The initial-value problem is instantiated and homogenized as described in \cite{forets2021combining}.
 
-\begin{lstlisting}[label=ejemplo, numbers=left, aboveskip=-0.2cm, belowskip=0.8mm]
-using ReachabilityAnalysis
-m = 0.25; k = 2.0
-M = [2m 0; 0 m]; K = [2k -k; -k k]; C = (M+K)/20
-F = [0.0, 1.0]; ΔF0 = Interval(0.9, 1.1)
-U0 = BallInf(zeros(4), 0.5)
-sys = SecondOrderLinearContinuousSystem(M, C, K, F)
-prob = InitialValueProblem(homogenize(sys), U0 × ΔF0)
-solA = solve(prob, 50, LGG09(δ=5e-2, dirs=:box, dim=5))
-solB = solve(prob, 50, LGG09(δ=5e-2, dirs=:oct, dim=5))
-\end{lstlisting}
 
-\begin{figure}[tb!]
+% \vspace{-0.1cm}
+
+\begin{figure}[tb]
 	\centering
 	\includegraphics[width=0.8\linewidth,keepaspectratio]{example/displacement_vs_time}
 	
 	\includegraphics[width=0.8\linewidth,keepaspectratio]{example/displacement_vs_displacement}
 	%
-	\caption{Flowpipe of displacements of mass $2m$ projected on time computed using canonical directions  (top), and flowpipe of displacements computed using octagonal directions (bottom). We additionally plot random simulations.}
+	\caption{Solution sets of mass $2m$ vs time (top) and displacement of both masses (bottom).}
 	\label{fig:example}
 \end{figure}
 
+
+
+\begin{comment}
 \noindent \emph{Solution method.} To illustrate the flexibility of our approach, two algorithm choices are considered, both relying on support functions~\cite{LeGuernic2010250} (\texttt{LGG09} algorithm in Lines 8-9).
 %
 \texttt{solA} contains the flowpipe efficiently computed along box directions $\pm e_1 = [\pm 1, 0, 0, 0]^T$, while \texttt{solB} contains the projection of the flowpipe for displacement coordinates of each mass. To improve the accuracy, the latter method uses octagonal template directions.
+\end{comment}
+% \vspace{-0.2cm}
 
-\vspace{0.2cm}
+%\vspace{-0.2cm}
+
+\begin{lstlisting}[label=ejemplo, numbers=left, aboveskip=0.55cm, belowskip=0.5cm]
+	using ReachabilityAnalysis
+	m = 0.25; k = 2.0
+	M = [2m 0; 0 m]; K = [2k -k; -k k]; C = (M+K)/20
+	F = [0.0, 1.0]; ΔF0 = Interval(0.9, 1.1)
+	U0 = BallInf(zeros(4), 0.5)
+	sys = SecondOrderLinearContinuousSystem(M, C, K, F)
+	prob = InitialValueProblem(homogenize(sys), U0 × ΔF0)
+	solA = solve(prob, 50, LGG09(δ=5e-2, dirs=:box, dim=5))
+	solB = solve(prob, 50, LGG09(δ=5e-2, dirs=:oct, dim=5))
+\end{lstlisting}
 
 \noindent \emph{Perspectives.} We envision to model variations in mass and stiffness parameters using interval methods~\cite{forets2021intervalmat, ferranti2021interval}.
 %
-Probabilistic reachability, and modeling nonlinear behaviors using state-space abstraction methods, are also planned.
+%Probabilistic reachability, and modeling nonlinear behaviors using state-space abstraction methods, are also planned.
 %
-Julia has a thriving ecosystem of open source FEM projects~\cite{Gridap,Ferrite,FinEtools}, and we think that integrating set propagation into such tools is the next key step for solving real world problems using reachability.
+Moreover, integrating our work with Julia's thriving ecosystem of FEM projects~\cite{Gridap,Ferrite,FinEtools} is the next key step to solve real problems using reachability.
 
 \input{bib.tex}
 	

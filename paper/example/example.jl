@@ -30,7 +30,7 @@ sol_orbit = [solve(p, T=50, alg=ORBIT(δ=0.01)) for p in prob_orbit_random(ntraj
 U0vert = vertices_list(B0)
 sol_orbit_vert = [solve(IVP(prob.s, v), T=50, alg=ORBIT(δ=0.01)) for v in U0vert]
 
-# plot displacement vs time
+# plot displacement (2m) vs time
 fig = plot(xlab="Time", ylab="Displacement",
            legendfontsize=16, legend=:topright,
            tickfont=font(18, "Times"), guidefontsize=18,
@@ -58,7 +58,7 @@ lens!(fig, [40, 50], [0.4, 0.6], inset = (1, bbox(0.58, 0.58, 0.35, 0.35)),
 savefig(fig, "displacement_vs_time.pdf")
 savefig(fig, "displacement_vs_time.png")
 
-# plot velocity vs displacement
+# plot displacement (2m) vs displacement (m)
 fig = plot(xlab="Displacement mass 2m", ylab="Displacement mass m",
            legendfontsize=16, legend=:topright,
            tickfont=font(18, "Times"), guidefontsize=18,
