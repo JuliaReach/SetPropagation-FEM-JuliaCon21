@@ -24,18 +24,26 @@
 	url    = {https://github.com/juliaintervals/IntervalLinearAlgebra.jl}
 }
 
-@article{forets-schilling-LazySets21,
+@inproceedings{forets-schilling-LazySets21,
 	title={{L}azy{S}ets.jl: {S}calable {S}ymbolic-{N}umeric {S}et {C}omputations},
 	author={Forets, Marcelo and Schilling, Christian},
-	journal={Submitted to JuliaCon Proceedings},
+	booktitle={Proceedings of the JuliaCon Conferences},
+	volume={1},
+	number={1},
+	pages={97},
 	year={2021}
 }
 
 @article{forets2021combining,
-	title={Combining Set Propagation with Finite Element Methods for Time Integration in Transient Solid Mechanics Problems},
-	author={Forets, Marcelo and Caporale, Daniel Freire and Zerpa, Jorge M P{\'e}rez},
-	journal={arXiv preprint arXiv:2105.05841. Accepted in Computers \& Structures},
-	year={2021}
+	title = {Combining set propagation with finite element methods for time integration in transient solid mechanics problems},
+	journal = {Computers & Structures},
+	volume = {259},
+	pages = {106699},
+	year = {2022},
+	issn = {0045-7949},
+	doi = {https://doi.org/10.1016/j.compstruc.2021.106699},
+	url = {https://www.sciencedirect.com/science/article/pii/S0045794921002212},
+	author = {Marcelo Forets and Daniel {Freire Caporale} and Jorge M. {Pérez Zerpa}}
 }
 
 @article{le2010reachability,
@@ -60,21 +68,22 @@
 	doi={10.1146/annurev-control-071420-081941}
 }
 
-@misc{onsas,
-	author       = {Jorge M. {Pérez~Zerpa} et al.},
-	title        = {Open {N}onlinear {S}tructural {A}nalysis {S}olver {{ONSAS}}},
-	month        = set,
-	year         = 2021,
-	howpublished = {\url{https://github.com/ONSAS/ONSAS.m/}}
+@software{onsas,
+	author = {Pérez Zerpa, Jorge M. and Bazzano García, Juan Bruno and Viera Sosa, Joaquin and Vanzulli Pena, Mauricio and Forets, Marcelo and Battini, Jean-Marc and Toro, Sebastián},
+	title = {{ONSAS.m: an Open Nonlinear Structural Analysis Solver for GNU-Octave/Matlab}},
+	howpublished = {\url{https://github.com/ONSAS/ONSAS.m/}},
+	version = {0.2.4},
+	doi={https://doi.org/10.5281/zenodo.5885614}
 }
 
-@misc{juliareach,
-	author       = {Marcelo Forets and Christian Schilling and Daniel Freire Caporale and Luis Benet and David P. Sanders and Sebastian Guadalupe},
-	title        = {{J}ulia{R}each},
-	month        = may,
-	year         = 2021,
-	howpublished = {\url{https://github.com/JuliaReach/}},
-	doi = {10.1145/3302504.3311804}
+
+@software{ReachabilityAnalysis,
+	author = {Forets, Marcelo and Schilling, Christian and Benet, Luis and Contributors,},
+	month = {1},
+	title = {{ReachabilityAnalysis.jl}},
+	version = {0.16.3},
+	year = {2022},
+	howpublished = {\url{https://github.com/JuliaReach/ReachabilityAnalysis.jl}}
 }
 
 @article{LeGuernic2010250,
