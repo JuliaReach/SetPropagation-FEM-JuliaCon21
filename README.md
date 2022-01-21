@@ -19,6 +19,14 @@ See Forets, Marcelo, Daniel Freire Caporale, and Jorge M. Pérez Zerpa. ["Combin
 
 The pre-print is available here: https://arxiv.org/abs/2105.05841
 
+## Implementation
+
+See https://github.com/JuliaReach/ReachabilityAnalysis.jl
+
+## Examples repository
+
+See https://github.com/JuliaReach/SetPropagation-FEM-Examples
+
 ## Minimal example
 
 We solve the system of two degrees of freedom loaded with a Heaviside step function subject to
@@ -37,10 +45,6 @@ To illustrate the flexibility of our approach, two algorithm choices are conside
 <img src="https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/example/displacement_vs_time.png" width="400"/>
 
 <img src="https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/blob/main/paper/example/displacement_vs_displacement.png" width="400"/>
-
-## Examples repository
-
-https://github.com/JuliaReach/SetPropagation-FEM-Examples
 
 ## References
 
