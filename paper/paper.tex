@@ -35,6 +35,7 @@
 	rulecolor=\color{black!30},
 	title=\lstname,
 	escapeinside={\%(*}{*)},
+	aboveskip=0mm,
 	breaklines=true,
 	breakatwhitespace=true,
 	framextopmargin=2pt,
@@ -94,10 +95,11 @@ Moreover, through a simple interface, it can be integrated with FEM tools such a
 %
 The implementations developed can be used to solve large systems, however, a minimal problem was chosen to illustrate its use. %
 %
-The spring-mass system shown in Fig.~\ref{fig:diagram}, loaded with a Heaviside step function with uncertainties in load and initial conditions, can be easily modeled and solved using the code shown below. %
+The spring-mass system shown in Fig.~\ref{fig:diagram}, loaded with a Heaviside step function with uncertainties in load and initial conditions, can be easily modeled and solved using the code shown in Listing~\ref{ejemplo}. %
 %
 The resulting solutions sets are shown in Fig.~\ref{fig:example} together with random simulations results.
 
+\setlength{\parskip}{0pt} 
 \begin{figure}[htb]
 	\centering
 	\def\svgwidth{0.26\textwidth}
@@ -105,10 +107,12 @@ The resulting solutions sets are shown in Fig.~\ref{fig:example} together with r
 	\caption{Diagram of two degrees of freedom and Rayleigh damping.}
 	\label{fig:diagram}
 \end{figure}
-
-
-
-\begin{lstlisting}[label=ejemplo, numbers=left, aboveskip=0.55cm, belowskip=0.5cm]
+%
+\vspace{-4mm}
+%
+%
+%
+\begin{lstlisting}[caption=Example code for the spring-mass problem.,label=ejemplo, numbers=left, belowskip=4mm]
 	using ReachabilityAnalysis
 	m = 0.25; k = 2.0
 	M = [2m 0; 0 m]; K = [2k -k; -k k]; C = (M+K)/20
