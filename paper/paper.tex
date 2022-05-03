@@ -107,19 +107,6 @@ The resulting solutions sets are shown in Fig.~\ref{fig:example} together with r
 \end{figure}
 
 
-% \vspace{-0.1cm}
-
-\begin{figure}[tb]
-	\centering
-	\includegraphics[width=0.82\linewidth,keepaspectratio]{example/displacement_vs_time}
-	
-	\includegraphics[width=0.82\linewidth,keepaspectratio]{example/displacement_vs_displacement}
-	%
-	\caption{Solution sets of mass $2m$ vs time (top) and displacement of both masses (bottom).}
-	\label{fig:example}
-\end{figure}
-
-
 
 \begin{lstlisting}[label=ejemplo, numbers=left, aboveskip=0.55cm, belowskip=0.5cm]
 	using ReachabilityAnalysis
@@ -134,6 +121,19 @@ The resulting solutions sets are shown in Fig.~\ref{fig:example} together with r
 \end{lstlisting}
 
 \noindent \emph{Perspectives.} We envision modeling uncertainties in density or stiffness using interval methods~\cite{forets2021intervalmat, ferranti2021interval}, as well as integrating our work with Julia's FEM projects~\cite{Gridap,Ferrite,FinEtools}.
+
+\vspace{-2mm}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.82\linewidth,keepaspectratio]{example/displacement_vs_time}
+	
+	\includegraphics[width=0.82\linewidth,keepaspectratio]{example/displacement_vs_displacement}
+	%
+	\caption{Solution sets of mass $2m$ vs time (top) and displacement of both masses (bottom).}
+	\label{fig:example}
+\end{figure}
+
 
 \input{bib.tex}
 	
