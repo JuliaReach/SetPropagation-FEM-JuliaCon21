@@ -54,9 +54,7 @@
 
 \emph{The Set-Based Approach.} %
 %
-Many real-world problems require the resolution of ODEs with uncertainties in initial conditions or in applied loads. Obtaining solutions considering these uncertainties is a challenging task, particularly in large scale systems. %
-%
-The set-based approach consists in the construction of sets that contain all the feasible solutions of the ODEs~\cite{althoff2020set}. %
+Many real-world problems require the resolution of ODEs with uncertainties in initial conditions or in applied loads. Obtaining solutions considering these uncertainties is a challenging task, particularly in large scale systems. The set-based approach consists in the construction of sets that contain all the feasible solutions of the ODEs~\cite{althoff2020set}. %
 % ---------------
 
 
@@ -64,12 +62,10 @@ The set-based approach consists in the construction of sets that contain all the
 
 \emph{Solid Dynamics ODEs.} %
 %
-In problems such as wave propagation or structural vibrations, solid dynamics problems are formulated. %
-%
-In these cases, large systems of ODEs of the form:
+In applications such as wave propagation or structural vibrations, solid dynamics problems are formulated. In these cases, large systems of ODEs of the form
 %
 \begin{equation}\label{eq:second_order}
-\mathbf{M} \mathbf{x}''(t) + \mathbf{C}\mathbf{x}'(t) + \mathbf{K}\mathbf{x}(t) = \mathbf{F}(t),
+\mathbf{M} \mathbf{x}''(t) + \mathbf{C}\mathbf{x}'(t) + \mathbf{K}\mathbf{x}(t) = \mathbf{F}(t)
 \end{equation}
 %
 are formulated using the Finite-Element Method (FEM)~\cite{Bathe2014}, where $\mathbf{x} \in \mathbb{R}^n$ is the displacements (or state) vector, and $\mathbf{M}$, $\mathbf{C}$ and $\mathbf{K}$ are the mass, damping and stiffness matrices, respectively. Depending on the problem, $n$ is typically  between $10^2$ and $10^5$.
@@ -111,19 +107,6 @@ The resulting solutions sets are shown in Fig.~\ref{fig:example} together with r
 \end{figure}
 
 
-% \vspace{-0.1cm}
-
-\begin{figure}[tb]
-	\centering
-	\includegraphics[width=0.82\linewidth,keepaspectratio]{example/displacement_vs_time}
-	
-	\includegraphics[width=0.82\linewidth,keepaspectratio]{example/displacement_vs_displacement}
-	%
-	\caption{Solution sets of mass $2m$ vs time (top) and displacement of both masses (bottom).}
-	\label{fig:example}
-\end{figure}
-
-
 
 \begin{lstlisting}[label=ejemplo, numbers=left, aboveskip=0.55cm, belowskip=0.5cm]
 	using ReachabilityAnalysis
@@ -138,6 +121,19 @@ The resulting solutions sets are shown in Fig.~\ref{fig:example} together with r
 \end{lstlisting}
 
 \noindent \emph{Perspectives.} We envision modeling uncertainties in density or stiffness using interval methods~\cite{forets2021intervalmat, ferranti2021interval}, as well as integrating our work with Julia's FEM projects~\cite{Gridap,Ferrite,FinEtools}.
+
+\vspace{-2mm}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.82\linewidth,keepaspectratio]{example/displacement_vs_time}
+	
+	\includegraphics[width=0.82\linewidth,keepaspectratio]{example/displacement_vs_displacement}
+	%
+	\caption{Solution sets of mass $2m$ vs time (top) and displacement of both masses (bottom).}
+	\label{fig:example}
+\end{figure}
+
 
 \input{bib.tex}
 	
