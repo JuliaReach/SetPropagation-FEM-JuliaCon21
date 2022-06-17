@@ -5,6 +5,9 @@ by [Jorge M. Pérez Zerpa](https://github.com/jorgepz) (Instituto de Estructuras
 
 [![status](https://proceedings.juliacon.org/papers/24a082818ba9447244932e21d16da342/status.svg)](https://proceedings.juliacon.org/papers/24a082818ba9447244932e21d16da342)
 
+[![DOI](https://zenodo.org/badge/406100282.svg)](https://zenodo.org/badge/latestdoi/406100282)
+
+
 ## Presentation
 
 [![JuliaCon 2021 video](https://img.youtube.com/vi/MQM9U0hiLks/0.jpg)](https://youtu.be/MQM9U0hiLks)
