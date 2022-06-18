@@ -1,0 +1,35 @@
+{
+    "description": "<p>JuliaCon 2021 publication, see <a href=\"https://github.com/JuliaCon/proceedings-review/issues/95\">https://github.com/JuliaCon/proceedings-review/issues/95</a></p>", 
+    "license": "other-open", 
+    "title": "JuliaReach/SetPropagation-FEM-JuliaCon21: v1.0", 
+    "version": "v1.0", 
+    "upload_type": "software", 
+    "publication_date": "2022-06-17", 
+    "creators": [
+        {
+            "affiliation": "Universidad de la República", 
+            "name": "Marcelo Forets"
+        }, 
+        {
+            "affiliation": "Universidad de la República", 
+            "name": "Jorge Pérez Zerpa"
+        }, 
+        {
+            "affiliation": "Universidad de la República"
+            "name": "Daniel Freire Caporale"
+        }
+    ], 
+    "access_right": "open", 
+    "related_identifiers": [
+        {
+            "scheme": "url", 
+            "identifier": "https://github.com/JuliaReach/SetPropagation-FEM-JuliaCon21/tree/v1.0", 
+            "relation": "isSupplementTo"
+        }, 
+        {
+            "scheme": "doi", 
+            "identifier": "10.5281/zenodo.6658126", 
+            "relation": "isVersionOf"
+        }
+    ]
+}
