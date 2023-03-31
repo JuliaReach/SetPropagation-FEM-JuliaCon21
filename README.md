@@ -8,6 +8,9 @@ by [Jorge M. Pérez Zerpa](https://github.com/jorgepz) (Instituto de Estructuras
 [![DOI](https://zenodo.org/badge/406100282.svg)](https://zenodo.org/badge/latestdoi/406100282)
 
 
+[JuliaCon Proceedings (pdf) of Computing Reachable Sets of Semi-Discrete Solid Dynamics Equations with ReachabilityAnalysis.jl
+](https://proceedings.juliacon.org/papers/10.21105/jcon.00095)
+
 ## Presentation
 
 [![JuliaCon 2021 video](https://img.youtube.com/vi/MQM9U0hiLks/0.jpg)](https://youtu.be/MQM9U0hiLks)
